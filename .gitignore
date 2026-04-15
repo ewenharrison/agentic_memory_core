@@ -1,0 +1,10 @@
+# Local secrets
+config/
+
+# Export artefacts
+exports/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/

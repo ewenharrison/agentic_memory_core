@@ -1,0 +1,31 @@
+# Tier 1 Workflow: Human Reviewed
+
+Use this workflow when new information should not become durable memory until you approve it.
+
+## Default Behavior
+
+- Raw source goes into `sources/`
+- Draft note goes into `inbox/`
+- Nothing is treated as canonical until promoted to `approved/`
+
+## Agent Responsibilities
+
+1. Record source metadata.
+2. Produce a draft source note.
+3. Separate summary from confidence-sensitive claims.
+4. Suggest tags, actions, and project links.
+5. Propose any updates needed in `memory.md`.
+6. Wait for review before updating approved memory.
+
+When updating `memory.md`, always link source entries to the local note or downloaded file.
+
+## Human Responsibilities
+
+1. Review the draft note.
+2. Accept, edit, or reject the proposed summary.
+3. Approve any facts that should become durable memory.
+4. Decide whether follow-up actions should be added to `memory.md` or `project.md`.
+
+## Promotion Rule
+
+Only reviewed material should move from `inbox/` into `approved/`.
