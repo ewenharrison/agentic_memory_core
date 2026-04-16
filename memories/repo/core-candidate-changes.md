@@ -45,6 +45,11 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Why: useful operationally, but may need cleanup and clearer scope before inclusion in a public core repo.
 - Evidence: could be useful, but should mature before promotion.
 
+### 2026-04-16: top-level `profile/` layer for personal context
+- Status: `Promote now`
+- Why: the separation between user-level context and project memory is now considered a core-worthy framework feature rather than a local experiment.
+- Evidence: implemented with explicit session-init rules, privacy guardrails, and reusable command/documentation support across the live repo.
+
 ## How To Use This File
 
 - Add one short entry when a new repo-level pattern emerges.

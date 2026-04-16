@@ -12,12 +12,15 @@ If a procedure changes, update it here first and then only add project-specific 
 
 ## Session Re-entry
 
+- If `profile/context.md` exists, load it before project-specific files when re-entering a project.
+- Use `Initialise personal context` to load only the personal-context layer.
 - Use `Initialise project <project-slug>` to restart a project cleanly in a new session.
 - Follow the read order defined in [session-init.md](./session-init.md).
 - Return a short rehydration summary covering objective, carried-forward claims, open loops, next actions, and guardrails.
 
 ## Working Memory Rule
 
+- `profile/context.md` is the primary quick-start file for durable personal context when the `profile/` layer is in use.
 - `memory.md` is the primary quick-start briefing for every project.
 - `project.md` is for slower-changing structure, goals, decisions, and governance.
 - `approved/` is canonical.

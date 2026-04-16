@@ -2,6 +2,8 @@
 
 `agentic_memory_core` is a reusable file-system framework for running project-based human-and-agent memory safely.
 
+It also supports an optional top-level personal-context layer at `profile/` for durable user-level preferences, writing style, and other cross-project context.
+
 It is designed for people who want:
 
 - one folder per project
@@ -24,6 +26,23 @@ The design centres on three ideas:
 ## Folder Layout
 
 ```text
+profile/
+  init.md
+  context.md
+  identity.md
+  preferences.md
+  writing_style.md
+  relationships.md
+  active_notes.md
+  approved/
+    source-index.md
+  auto/
+    source-index.md
+  logs/
+    activity.md
+  sources/
+    files/
+    links/
 memories/
   _templates/
   projects/
@@ -46,6 +65,16 @@ It should stay compact and answer:
 - what claims are we carrying forward?
 - what is still open?
 - what should happen next?
+
+### `profile/context.md`
+
+The first file to open when loading user-level personal context.
+Use it for:
+
+- durable cross-project facts
+- writing or collaboration preferences
+- active notes that matter across current work
+- guardrails around how personal context should be used
 
 ### `project.md`
 
@@ -107,11 +136,22 @@ Use:
 
 The standard read order is:
 
-1. `memory.md`
-2. `project.md`
-3. `approved/source-index.md`
-4. `auto/source-index.md`
-5. `logs/activity.md`
+1. `profile/context.md` if present
+2. `memory.md`
+3. `project.md`
+4. `approved/source-index.md`
+5. `auto/source-index.md`
+6. `logs/activity.md`
+
+To load only the personal-context layer, use:
+
+`Initialise personal context`
+
+When the `profile/` layer is in use, you can also say:
+
+- `Save this to personal context`
+- `Save this to personal context as approved`
+- `Do not use personal context for this task`
 
 ## Writing Convention
 

@@ -13,6 +13,8 @@ $destinationPath = if ([System.IO.Path]::IsPathRooted($Destination)) {
 
 $includePaths = @(
     "README.core.md",
+    "PUBLISHING.core.md",
+    "profile.core",
     "memories\_templates",
     "memories\repo",
     "memories\workflows",
@@ -40,6 +42,12 @@ foreach ($relativePath in $includePaths) {
     if ($relativePath -eq "README.core.md") {
         $targetPath = Join-Path $destinationPath "README.md"
     }
+    if ($relativePath -eq "PUBLISHING.core.md") {
+        $targetPath = Join-Path $destinationPath "PUBLISHING.md"
+    }
+    if ($relativePath -eq "profile.core") {
+        $targetPath = Join-Path $destinationPath "profile"
+    }
     if ($relativePath -eq "memories\\registry\\index.core.md") {
         $targetPath = Join-Path $destinationPath "memories\\registry\\index.md"
     }
@@ -59,7 +67,7 @@ if (Test-Path -LiteralPath $exportRegistryIndexPath) {
     Remove-Item -LiteralPath $exportRegistryIndexPath -Force
 }
 
-Copy-Item -LiteralPath $coreRegistryIndexSource -Destination $exportRegistryIndexPath -Force
+Get-Content -LiteralPath $coreRegistryIndexSource -Raw | Set-Content -LiteralPath $exportRegistryIndexPath
 
 @"
 # Local secrets
