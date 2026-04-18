@@ -1,6 +1,6 @@
 # Core Candidate Changes
 
-Use this file as the running shortlist of framework improvements that may be promoted to `agentic_memory_core`.
+Use this file as the running shortlist of framework improvements that may be promoted to `agentic_workspace_core`.
 
 ## Status Key
 

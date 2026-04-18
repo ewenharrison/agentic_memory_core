@@ -62,5 +62,5 @@ If a procedure changes, update it here first and then only add project-specific 
 
 - Treat this private repo as the proving ground for framework ideas.
 - Record reusable framework improvements in [core-candidate-changes.md](./core-candidate-changes.md).
-- Use [core-promotion.md](./core-promotion.md) as the decision rule for what should move into `agentic_memory_core`.
+- Use [core-promotion.md](./core-promotion.md) as the decision rule for what should move into `agentic_workspace_core`.
 - Do not promote real project content, private operational details, or unstable experiments by default.

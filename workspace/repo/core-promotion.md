@@ -1,6 +1,6 @@
 # Core Promotion Workflow
 
-Use this file to manage what should move from the private live repo into `agentic_memory_core`.
+Use this file to manage what should move from the private live repo into `agentic_workspace_core`.
 
 ## Purpose
 
@@ -11,7 +11,7 @@ Changes should usually be developed and tested here first, then promoted only on
 
 ## Promotion Rule
 
-Promote a change to `agentic_memory_core` when it:
+Promote a change to `agentic_workspace_core` when it:
 
 - improves the workflow for more than one project
 - is not tied to a specific domain, source, collaborator, or institution
@@ -29,7 +29,7 @@ Keep a change private when it:
 
 ## Non-Promotion Rule
 
-Never promote these into `agentic_memory_core`:
+Never promote these into `agentic_workspace_core`:
 
 - specific live project content
 - generated Tier 2 notes from live runs
@@ -88,7 +88,7 @@ The top-level `profile/` layer is now considered eligible for promotion to core 
 
 ## Current Promotion Checklist: `profile/` Layer
 
-Use this checklist when promoting the personal-context layer into `agentic_memory_core`.
+Use this checklist when promoting the personal-context layer into `agentic_workspace_core`.
 
 ### Framework Decisions To Promote
 

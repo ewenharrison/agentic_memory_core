@@ -1,4 +1,4 @@
-# Publishing `agentic_memory_core`
+# Publishing `agentic_workspace_core`
 
 This folder is intended to become a clean standalone repo for the reusable Agentic Memory framework.
 
@@ -46,7 +46,7 @@ git commit -m "Initial commit: agentic memory core framework"
 If you use GitHub CLI:
 
 ```powershell
-gh repo create agentic_memory_core --public --source . --remote origin --push
+gh repo create agentic_workspace_core --public --source . --remote origin --push
 ```
 
 If you prefer to create the repo on GitHub first:

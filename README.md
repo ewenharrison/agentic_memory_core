@@ -1,6 +1,6 @@
 # Agentic Memory Core
 
-`agentic_memory_core` is a reusable file-system framework for running project-based human-and-agent memory safely.
+`agentic_workspace_core` is a reusable file-system framework for running project-based human-and-agent memory safely.
 
 It also supports an optional top-level personal-context layer at `profile/` for durable user-level preferences, writing style, and other cross-project context.
 

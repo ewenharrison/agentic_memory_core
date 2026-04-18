@@ -1,5 +1,5 @@
 param(
-    [string]$Destination = ".\exports\agentic_memory_core"
+    [string]$Destination = ".\exports\agentic_workspace_core"
 )
 
 $ErrorActionPreference = "Stop"
