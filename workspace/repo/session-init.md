@@ -19,11 +19,11 @@ Example:
 When the user gives the initialisation command, the agent should:
 
 1. If `profile/context.md` exists, open it first.
-2. Open `memories/projects/<project-slug>/memory.md`.
-3. Open `memories/projects/<project-slug>/project.md`.
-4. Open `memories/projects/<project-slug>/approved/source-index.md` for evidence navigation.
-5. Open `memories/projects/<project-slug>/auto/source-index.md` if Tier 2 is enabled or recent exploratory work matters.
-6. Check `memories/projects/<project-slug>/logs/activity.md` for the latest operational changes.
+2. Open `workspace/projects/<project-slug>/memory.md`.
+3. Open `workspace/projects/<project-slug>/project.md`.
+4. Open `workspace/projects/<project-slug>/approved/source-index.md` for evidence navigation.
+5. Open `workspace/projects/<project-slug>/auto/source-index.md` if Tier 2 is enabled or recent exploratory work matters.
+6. Check `workspace/projects/<project-slug>/logs/activity.md` for the latest operational changes.
 7. Return a short rehydration summary covering:
    - current objective
    - key carried-forward claims

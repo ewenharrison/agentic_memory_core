@@ -6,7 +6,7 @@ If a procedure changes, update it here first and then only add project-specific 
 
 ## Procedure Rule
 
-- Shared operational procedures should live in this file or another repo-level procedure file under `memories/repo/`.
+- Shared operational procedures should live in this file or another repo-level procedure file under `workspace/repo/`.
 - Projects should link to shared procedures rather than duplicating them where possible.
 - Project files should only contain local exceptions, project-specific permissions, or project-specific context.
 
@@ -31,11 +31,27 @@ If a procedure changes, update it here first and then only add project-specific 
 - If Tier 2 is enabled proactively, record its permission and limits in `auto/autonomous-lane-policy.md`.
 - Tier 2 may support `memory.md`, but its outputs must remain clearly provisional until reviewed or promoted.
 
+## Pull Sync Rule
+
+- After merging a pull request, pull the latest `main` into the local checkout before continuing work.
+- Prefer `git pull --ff-only origin main` when the local branch is `main` and no local divergence is intended.
+
 ## Teams Posting Rule
 
 - Collaborator-facing Teams updates should live in `collab/teams-update.md`.
 - Default to the adaptive-card webhook workflow supported by `scripts/post-teams-update.ps1`.
 - Do not switch to plain text unless there is a clear endpoint-specific reason.
+
+## Slack Posting Rule
+
+- Collaborator-facing Slack updates should live in `collab/slack-update.md`.
+- Default to Slack incoming webhooks posted through `scripts/post-slack-update.ps1`.
+- If full files need to be posted to Slack, use `scripts/post-slack-file.ps1` so long content is chunked safely across multiple messages.
+- Store the Slack webhook URL in `config/slack-webhook-url.txt` or `SLACK_WEBHOOK_URL`.
+- If multiple Slack destinations are needed, store them in `config/slack-webhooks.json` and address them by name with `-Target`.
+- Prefer incoming webhooks for simple channel updates; use a bot only if you need richer routing, threads, or DMs.
+- Treat the webhook as channel-bound unless a richer Slack app setup is introduced later.
+- If a Slack post fails inside the sandbox with a connection-level error, an unrestricted retry may still succeed.
 
 ## Writing Convention
 

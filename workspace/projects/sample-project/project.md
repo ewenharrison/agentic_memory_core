@@ -1,0 +1,48 @@
+# Sample Project
+
+## Overview
+This sample project shows how academic memory can be organized with reviewed and autonomous layers.
+
+## Quick Access
+- Fast session briefing: [memory.md](./memory.md)
+- Approved source map: [approved/source-index.md](./approved/source-index.md)
+- Session bootstrap: [init.md](./init.md)
+- Shared procedures: [../../repo/shared-procedures.md](../../repo/shared-procedures.md)
+
+## Scope
+- In scope: project notes, source summaries, decisions, and tasks
+- Out of scope: raw brainstorming with no project connection
+
+## Goals
+- [x] Establish a project memory layout
+- [ ] Add first real source
+- [ ] Review and promote one summary from inbox to approved
+
+## Active Tasks
+- [ ] Add a file or URL for ingestion
+- [ ] Decide whether to use Tier 1 or Tier 2 for the first intake
+
+## Key Decisions
+- Decision: keep approved and autonomous memory separate
+  Reason: preserves trust while still enabling agentic speed
+
+## Open Questions
+- What naming convention should be used for project folders?
+- Which source fields matter most for your academic workflow?
+
+## Current Understanding
+This project is a template and should be replaced or cloned for real work.
+
+## Working Rule
+Open `memory.md` first when resuming this project. Use this file for slower-changing project structure, goals, and governance.
+Follow shared repo procedures unless this project explicitly documents an exception.
+
+## Important Sources
+- None yet
+
+## Risks Or Unknowns
+- The preferred intake workflow may evolve after first use
+
+## Next Review
+- Date:
+- Focus: refine the intake and approval flow

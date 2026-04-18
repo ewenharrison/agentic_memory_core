@@ -31,7 +31,7 @@ function Get-WebhookUrl {
 function Get-DefaultFile {
     param([string]$Project)
 
-    $candidate = Join-Path $PSScriptRoot "..\\memories\\projects\\$Project\\collab\\teams-update.md"
+    $candidate = Join-Path $PSScriptRoot "..\\workspace\\projects\\$Project\\collab\\teams-update.md"
     if (Test-Path $candidate) {
         return $candidate
     }

@@ -20,7 +20,7 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Why: the split between fast briefing and slower project governance is one of the strongest framework decisions so far.
 - Evidence: now embedded consistently across the repo structure.
 
-### 2026-04-15: shared repo procedures centralised in `memories/repo/shared-procedures.md`
+### 2026-04-15: shared repo procedures centralised in `workspace/repo/shared-procedures.md`
 - Status: `Promote now`
 - Why: this reduces duplication and makes framework evolution easier.
 - Evidence: already supports multiple projects cleanly.

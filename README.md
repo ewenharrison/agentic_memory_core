@@ -43,7 +43,7 @@ profile/
   sources/
     files/
     links/
-memories/
+workspace/
   _templates/
   projects/
     sample-project/

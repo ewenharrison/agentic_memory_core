@@ -15,13 +15,15 @@ $includePaths = @(
     "README.core.md",
     "PUBLISHING.core.md",
     "profile.core",
-    "memories\_templates",
-    "memories\repo",
-    "memories\workflows",
-    "memories\registry",
-    "memories\registry\index.core.md",
-    "memories\projects\sample-project",
+    "workspace\_templates",
+    "workspace\repo",
+    "workspace\workflows",
+    "workspace\registry",
+    "workspace\registry\index.core.md",
+    "workspace\projects\sample-project",
+    ".github\workflows\tier2-cloud-maintenance.yml",
     "scripts\post-teams-update.ps1",
+    "scripts\run-tier2-cloud-task.ps1",
     "scripts\export-agentic-memory-core.ps1"
 )
 
@@ -48,8 +50,8 @@ foreach ($relativePath in $includePaths) {
     if ($relativePath -eq "profile.core") {
         $targetPath = Join-Path $destinationPath "profile"
     }
-    if ($relativePath -eq "memories\\registry\\index.core.md") {
-        $targetPath = Join-Path $destinationPath "memories\\registry\\index.md"
+    if ($relativePath -eq "workspace\\registry\\index.core.md") {
+        $targetPath = Join-Path $destinationPath "workspace\\registry\\index.md"
     }
     $targetParent = Split-Path -Parent $targetPath
     if ($targetParent) {
@@ -59,9 +61,9 @@ foreach ($relativePath in $includePaths) {
     Copy-Item -LiteralPath $sourcePath -Destination $targetPath -Recurse -Force
 }
 
-$exportRegistryPath = Join-Path $destinationPath "memories\registry"
+$exportRegistryPath = Join-Path $destinationPath "workspace\registry"
 $exportRegistryIndexPath = Join-Path $exportRegistryPath "index.md"
-$coreRegistryIndexSource = Join-Path $repoRoot "memories\registry\index.core.md"
+$coreRegistryIndexSource = Join-Path $repoRoot "workspace\registry\index.core.md"
 
 if (Test-Path -LiteralPath $exportRegistryIndexPath) {
     Remove-Item -LiteralPath $exportRegistryIndexPath -Force
