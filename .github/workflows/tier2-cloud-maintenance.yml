@@ -11,8 +11,6 @@ on:
         description: "What the cloud run should attempt"
         required: false
         default: "Refresh Tier 2 working memory and capture any administrative decisions."
-  schedule:
-    - cron: "15 6 * * *"
 
 permissions:
   contents: write

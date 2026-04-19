@@ -122,6 +122,25 @@ Use it for agent-generated summaries, rough synthesis, and provisional material 
 - local configuration and secrets
 - project-specific operational details that are not general defaults
 
+## Cloud Tier 2 Workflow
+
+Core includes a manual-only GitHub Actions workflow for cloud-triggered Tier 2 maintenance:
+
+- `.github/workflows/tier2-cloud-maintenance.yml`
+- `scripts/run-tier2-cloud-task.ps1`
+
+It is intentionally exported without a scheduled trigger.
+
+To use it:
+
+1. Add `OPENAI_API_KEY` as a repository secret.
+2. Optionally add repository variables:
+   - `OPENAI_MODEL`
+   - `OPENAI_REASONING_EFFORT`
+3. Trigger `Tier 2 Cloud Maintenance` manually from the Actions tab.
+
+If you want automatic runs in your own private repo, add a `schedule:` block to the workflow after forking or copying the framework.
+
 ## Suggested Use
 
 - keep this repo as the clean framework

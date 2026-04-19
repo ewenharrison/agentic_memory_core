@@ -25,7 +25,7 @@ The first public commit should include:
 
 - `README.md`
 - `.gitignore`
-- `memories/`
+- `workspace/`
 - `scripts/`
 - this publishing guide
 
@@ -61,11 +61,13 @@ git push -u origin main
 - add a licence
 - add a short changelog or release notes file if you expect frequent framework updates
 - document how changes are promoted from your private live repo into core
+- if you want cloud Tier 2 runs, add `OPENAI_API_KEY` as a repository secret before triggering the included workflow
+- if you want cloud Tier 2 runs on a schedule, add your own `schedule:` trigger after publishing
 
 ## Suggested Ongoing Workflow
 
 1. Improve the framework in the private live repo.
-2. Mark promising changes in `memories/repo/core-candidate-changes.md`.
+2. Mark promising changes in `workspace/repo/core-candidate-changes.md`.
 3. Export a fresh core bundle.
 4. Review the diff in the standalone core repo.
 5. Commit only the reusable improvements.
