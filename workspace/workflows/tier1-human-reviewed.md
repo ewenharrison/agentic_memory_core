@@ -5,7 +5,7 @@ Use this workflow when new information should not become durable memory until yo
 ## Default Behavior
 
 - Raw source goes into `sources/`
-- Draft note goes into `inbox/`
+- Draft note goes into `working/`
 - Nothing is treated as canonical until promoted to `approved/`
 
 ## Agent Responsibilities
@@ -28,4 +28,4 @@ When updating `memory.md`, always link source entries to the local note or downl
 
 ## Promotion Rule
 
-Only reviewed material should move from `inbox/` into `approved/`.
+Only reviewed material should move from `working/` into `approved/`.

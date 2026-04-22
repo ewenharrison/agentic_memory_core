@@ -89,6 +89,15 @@ Use it for:
 - open questions
 - important sources
 
+### `working/`
+
+The pre-approved Tier 1 workspace.
+Use it for:
+
+- draft source notes and summaries
+- concept notes, search strategies, figures, and export-ready working documents
+- material that has been structured but not yet promoted into canonical memory
+
 ### `approved/`
 
 The trusted layer.
@@ -103,7 +112,7 @@ Use it for agent-generated summaries, rough synthesis, and provisional material 
 
 1. Create a new project from the sample structure.
 2. Add material to the project.
-3. Summarise or structure it into `inbox/`, `approved/`, or `auto/` depending on trust level.
+3. Summarise or structure it into `working/`, `approved/`, or `auto/` depending on trust level.
 4. Keep `memory.md` current so future sessions can restart quickly.
 5. Promote only reviewed material into the canonical layer.
 

@@ -29,3 +29,15 @@ When updating `memory.md`, always link source entries to the local note or downl
 ## Promotion Rule
 
 Autonomous memory is useful working memory, but it should not be treated as trusted canonical memory until you promote it.
+
+## Possible Future Requirement
+
+Tier 2 may later need a stricter `LLM-as-judge` layer for relevance control, especially in literature-heavy projects.
+
+If adopted, that judging layer should help decide whether new material is:
+
+- directly relevant to the project's core thesis
+- only adjacent background
+- too weakly connected to bring forward
+
+This is not a current requirement, but it remains a plausible future upgrade for keeping Tier 2 focused.

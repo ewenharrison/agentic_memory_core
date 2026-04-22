@@ -22,7 +22,7 @@ For each new project, create:
 - `workspace/projects/<project-slug>/collab/teams-update.md` when Teams sharing is used
 - `workspace/projects/<project-slug>/sources/files/`
 - `workspace/projects/<project-slug>/sources/links/`
-- `workspace/projects/<project-slug>/inbox/`
+- `workspace/projects/<project-slug>/working/`
 
 ## Standard Resume Flow
 

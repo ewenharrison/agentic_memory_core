@@ -68,7 +68,7 @@ Examples:
 - `core: add project init bootstrap file`
 - `core: refine memory snapshot structure`
 - `repo: add export script for public-safe core bundle`
-- `project: add awaab_law landscape note`
+- `project: add domain-specific landscape note`
 
 ## Export Scope
 

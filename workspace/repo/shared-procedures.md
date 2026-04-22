@@ -31,6 +31,12 @@ If a procedure changes, update it here first and then only add project-specific 
 - If Tier 2 is enabled proactively, record its permission and limits in `auto/autonomous-lane-policy.md`.
 - Tier 2 may support `memory.md`, but its outputs must remain clearly provisional until reviewed or promoted.
 
+## Scout To Synthesis Rule
+
+- When a `Literature Scout` pass finds non-trivial new material, changed framing, or evidence that could alter project positioning, follow it with a `Synthesis Agent` pass.
+- Use the `Synthesis Agent` to integrate new findings with existing memory, novelty claims, open loops, and current project framing before deciding what becomes an approved note or a project-memory update.
+- Minor confirmatory search results do not always require a synthesis pass.
+
 ## Pull Sync Rule
 
 - After merging a pull request, pull the latest `main` into the local checkout before continuing work.
@@ -52,6 +58,12 @@ If a procedure changes, update it here first and then only add project-specific 
 - Prefer incoming webhooks for simple channel updates; use a bot only if you need richer routing, threads, or DMs.
 - Treat the webhook as channel-bound unless a richer Slack app setup is introduced later.
 - If a Slack post fails inside the sandbox with a connection-level error, an unrestricted retry may still succeed.
+
+## Word Export Rule
+
+- When asked to save, export, render, or convert Markdown to Word, use [word-export.md](word-export.md).
+- Default to Pandoc via `scripts/export-markdown-to-word.ps1`.
+- Avoid Word COM automation unless the user explicitly asks for it.
 
 ## Writing Convention
 

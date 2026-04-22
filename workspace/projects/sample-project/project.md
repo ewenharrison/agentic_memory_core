@@ -16,7 +16,7 @@ This sample project shows how academic memory can be organized with reviewed and
 ## Goals
 - [x] Establish a project memory layout
 - [ ] Add first real source
-- [ ] Review and promote one summary from inbox to approved
+- [ ] Review and promote one summary from working to approved
 
 ## Active Tasks
 - [ ] Add a file or URL for ingestion

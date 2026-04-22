@@ -8,7 +8,7 @@ Use this file to standardize how a new agent session should re-enter the memory 
 
 Example:
 
-`Initialise project healthcare_memory`
+`Initialise project sample-project`
 
 ## Personal Context Command
 

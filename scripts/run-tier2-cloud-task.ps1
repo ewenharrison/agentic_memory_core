@@ -9,6 +9,9 @@ param(
     [string]$RunMode = "manual",
 
     [Parameter(Mandatory = $false)]
+    [string]$AgentMode = "general",
+
+    [Parameter(Mandatory = $false)]
     [switch]$SkipModelCall
 )
 
@@ -74,6 +77,62 @@ function Get-TrimmedFileBlock {
     }
 
     return "## $Label`nPath: $Path`n`n$raw"
+}
+
+function Resolve-AgentMode {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Value
+    )
+
+    $normalised = $Value.Trim().ToLowerInvariant()
+    switch ($normalised) {
+        "general" { return "general" }
+        "literature_scout" { return "literature_scout" }
+        "literature-scout" { return "literature_scout" }
+        "synthesis_agent" { return "synthesis_agent" }
+        "synthesis-agent" { return "synthesis_agent" }
+        default { throw "Unsupported agent mode '$Value'. Use 'general', 'literature_scout', or 'synthesis_agent'." }
+    }
+}
+
+function Get-AgentModeLabel {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Mode
+    )
+
+    switch ($Mode) {
+        "literature_scout" { return "Literature Scout" }
+        "synthesis_agent" { return "Synthesis Agent" }
+        default { return "General Tier 2 Agent" }
+    }
+}
+
+function Get-AgentPromptTemplateText {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$RepoRoot,
+
+        [Parameter(Mandatory = $true)]
+        [string]$Mode
+    )
+
+    $templateMap = @{
+        literature_scout = "workspace\_templates\literature_scout_prompt.md"
+        synthesis_agent  = "workspace\_templates\synthesis_agent_prompt.md"
+    }
+
+    if (-not $templateMap.ContainsKey($Mode)) {
+        return ""
+    }
+
+    $templatePath = Join-Path $RepoRoot $templateMap[$Mode]
+    if (-not (Test-Path -LiteralPath $templatePath)) {
+        return ""
+    }
+
+    return Get-Content -LiteralPath $templatePath -Raw
 }
 
 function Resolve-LanePolicyPath {
@@ -155,7 +214,16 @@ function Invoke-OpenAISynthesis {
         [string]$ContextText,
 
         [Parameter(Mandatory = $true)]
-        [string]$RunModeValue
+        [string]$RunModeValue,
+
+        [Parameter(Mandatory = $true)]
+        [string]$AgentModeValue,
+
+        [Parameter(Mandatory = $true)]
+        [string]$AgentModeLabel,
+
+        [Parameter(Mandatory = $false)]
+        [string]$AgentTemplateText
     )
 
     $apiKey = $env:OPENAI_API_KEY
@@ -220,9 +288,17 @@ Rules:
 - Return valid JSON that matches the schema exactly.
 '@
 
+    if (-not [string]::IsNullOrWhiteSpace($AgentTemplateText)) {
+        $developerInstructions += "`n`nAgent mode: $AgentModeLabel (`$AgentModeValue = $AgentModeValue)`n`n$AgentTemplateText"
+    }
+    else {
+        $developerInstructions += "`n`nAgent mode: $AgentModeLabel"
+    }
+
     $userPrompt = @"
 Project: $ProjectName
 Run mode: $RunModeValue
+Agent mode: $AgentModeLabel
 Task prompt: $Prompt
 
 Produce a Tier 2 working note with:
@@ -300,6 +376,9 @@ $ContextText
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $projectRoot = Join-Path $repoRoot "workspace\projects\$Project"
+$resolvedAgentMode = Resolve-AgentMode -Value $AgentMode
+$agentModeLabel = Get-AgentModeLabel -Mode $resolvedAgentMode
+$agentTemplateText = Get-AgentPromptTemplateText -RepoRoot $repoRoot -Mode $resolvedAgentMode
 
 if (-not (Test-Path -LiteralPath $projectRoot)) {
     throw "Project '$Project' not found at '$projectRoot'."
@@ -385,7 +464,10 @@ else {
         -ProjectName $Project `
         -Prompt $TaskPrompt `
         -ContextText $contextText `
-        -RunModeValue $RunMode
+        -RunModeValue $RunMode `
+        -AgentModeValue $resolvedAgentMode `
+        -AgentModeLabel $agentModeLabel `
+        -AgentTemplateText $agentTemplateText
 }
 
 $noteSlug = Convert-ToSlug -Value ([string]$synthesis.Parsed.note_title)
@@ -436,44 +518,46 @@ $note = @'
 - Timestamp: {2}
 - Project: {3}
 - Run mode: {4}
-- Model: {5}
-- Reasoning effort: {6}
-- Response ID: {7}
+- Agent mode: {5}
+- Model: {6}
+- Reasoning effort: {7}
+- Response ID: {8}
 - Status: Tier 2 cloud synthesis note
 
 ## Requested Task
 
-{8}
+{9}
 
 ## Summary
 
-{9}
+{10}
 
 ## Key Updates
 
-{10}
+{11}
 
 ## Open Loops
 
-{11}
+{12}
 
 ## Next Actions
 
-{12}
+{13}
 
 ## Evidence Used
 
-{13}
+{14}
 
 ## Guardrails
 
-{14}
+{15}
 '@ -f `
     $synthesis.Parsed.note_title,
     $dateStamp,
     $timestamp,
     $Project,
     $RunMode,
+    $agentModeLabel,
     $synthesis.Model,
     $synthesis.ReasoningEffort,
     $synthesis.ResponseId,
@@ -490,7 +574,7 @@ Set-Content -LiteralPath $notePath -Value $note
 $indexLine = "- [{0}]({1})" -f $synthesis.Parsed.note_title, $relativeNotePath
 Add-LineIfMissing -Path $sourceIndexPath -Line $indexLine
 
-$logLine = "- {0}: Recorded a cloud-triggered Tier 2 synthesis run for `{1}` using model `{2}` with note `{3}`." -f $dateStamp, $Project, $synthesis.Model, $synthesis.Parsed.note_title
+$logLine = "- {0}: Recorded a cloud-triggered Tier 2 synthesis run for `{1}` in `{2}` mode using model `{3}` with note `{4}`." -f $dateStamp, $Project, $agentModeLabel, $synthesis.Model, $synthesis.Parsed.note_title
 Add-LineIfMissing -Path $logsPath -Line $logLine
 
 Write-Host "Created $notePath"

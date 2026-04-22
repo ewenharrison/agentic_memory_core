@@ -50,6 +50,27 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Why: the separation between user-level context and project memory is now considered a core-worthy framework feature rather than a local experiment.
 - Evidence: implemented with explicit session-init rules, privacy guardrails, and reusable command/documentation support across the live repo.
 
+### 2026-04-22: use `working/` as the Tier 1 pre-approved workspace
+- Status: `Promote now`
+- Why: `working/` better captures the actual role of pre-approved drafts, concept notes, search strategies, figures, and structured notes, while `sources/` remains the raw intake layer.
+- Evidence: migrated across all live project folders and repo-level docs.
+
+### 2026-04-22: Literature Scout and Synthesis Agent modes
+- Status: `Promote now`
+- Why: reusable agent roles make Tier 2 more explicit and reduce the risk of unintegrated literature findings being treated as memory.
+- Evidence: prompt templates exist and `run-tier2-cloud-task.ps1` can resolve `general`, `literature_scout`, and `synthesis_agent` modes.
+- Evidence: the core manual workflow now exposes `agent_mode`.
+
+### 2026-04-22: Markdown-to-Word export routine
+- Status: `Promote now`
+- Why: a Pandoc-backed Word export rule is reusable for concept notes and collaborator-facing drafts.
+- Evidence: the script and documentation are generic enough for core export.
+
+### 2026-04-22: Tier 2 LLM-as-judge relevance control
+- Status: `Watch`
+- Why: potentially useful for literature-heavy projects, but not yet implemented or designed enough for a core feature.
+- Evidence: captured as a future requirement in the Tier 2 workflow.
+
 ## How To Use This File
 
 - Add one short entry when a new repo-level pattern emerges.

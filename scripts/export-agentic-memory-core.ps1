@@ -22,6 +22,7 @@ $includePaths = @(
     "workspace\registry\index.core.md",
     "workspace\projects\sample-project",
     ".github\workflows\tier2-cloud-maintenance.core.yml",
+    "scripts\export-markdown-to-word.ps1",
     "scripts\post-teams-update.ps1",
     "scripts\run-tier2-cloud-task.ps1",
     "scripts\export-agentic-memory-core.ps1"
@@ -73,6 +74,11 @@ if (Test-Path -LiteralPath $exportRegistryIndexPath) {
 }
 
 Get-Content -LiteralPath $coreRegistryIndexSource -Raw | Set-Content -LiteralPath $exportRegistryIndexPath
+
+$privateRepoNotes = Get-ChildItem -LiteralPath (Join-Path $destinationPath "workspace\repo") -Filter "*-core-promotion-review.md" -File -ErrorAction SilentlyContinue
+foreach ($note in $privateRepoNotes) {
+    Remove-Item -LiteralPath $note.FullName -Force
+}
 
 @"
 # Local secrets

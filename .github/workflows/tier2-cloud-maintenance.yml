@@ -7,6 +7,10 @@ on:
         description: "Project slug to maintain"
         required: true
         default: "sample-project"
+      agent_mode:
+        description: "Agent mode to run"
+        required: false
+        default: "general"
       task_prompt:
         description: "What the cloud run should attempt"
         required: false
@@ -40,12 +44,18 @@ jobs:
             $project = "sample-project"
           }
 
+          $agentMode = "${{ github.event.inputs.agent_mode }}"
+          if ([string]::IsNullOrWhiteSpace($agentMode)) {
+            $agentMode = "general"
+          }
+
           $prompt = "${{ github.event.inputs.task_prompt }}"
           if ([string]::IsNullOrWhiteSpace($prompt)) {
             $prompt = "Refresh Tier 2 working memory and capture any administrative decisions."
           }
 
           "PROJECT_SLUG=$project" >> $env:GITHUB_ENV
+          "AGENT_MODE=$agentMode" >> $env:GITHUB_ENV
           "RUN_MODE=${{ github.event_name }}" >> $env:GITHUB_ENV
 
           $delimiter = [guid]::NewGuid().ToString()
@@ -58,6 +68,7 @@ jobs:
         run: |
           .\scripts\run-tier2-cloud-task.ps1 `
             -Project $env:PROJECT_SLUG `
+            -AgentMode $env:AGENT_MODE `
             -TaskPrompt $env:TASK_PROMPT `
             -RunMode $env:RUN_MODE
 
@@ -72,14 +83,15 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
-          commit-message: "tier2: record cloud maintenance run for ${{ env.PROJECT_SLUG }}"
+          commit-message: "tier2: record ${{ env.AGENT_MODE }} run for ${{ env.PROJECT_SLUG }}"
           branch: "tier2/${{ env.PROJECT_SLUG }}-${{ github.run_id }}"
-          title: "tier2: cloud maintenance for ${{ env.PROJECT_SLUG }}"
+          title: "tier2: ${{ env.AGENT_MODE }} run for ${{ env.PROJECT_SLUG }}"
           body: |
             This PR was opened automatically by the generic Tier 2 cloud-maintenance workflow.
 
             Run mode: `${{ env.RUN_MODE }}`
             Project: `${{ env.PROJECT_SLUG }}`
+            Agent mode: `${{ env.AGENT_MODE }}`
             Prompt:
             `${{ env.TASK_PROMPT }}`
 
