@@ -98,6 +98,26 @@ Use it for:
 - concept notes, search strategies, figures, and export-ready working documents
 - material that has been structured but not yet promoted into canonical memory
 
+Search strategies and executed search results should be stored as separate working files so it is clear whether a search has actually been run.
+
+Example pattern:
+
+- `working/search-strategy-<topic>.md`
+- `working/search-results-<topic>.md`
+
+### `workspace/runs/agent-runs.md`
+
+The cross-project control surface for agent runs.
+Use it to track:
+
+- cloud or local agent runs
+- input files or prompts
+- generated pull requests or notes
+- dependencies between scout, search, and synthesis steps
+- final decisions such as merged, closed, superseded, or promoted
+
+GitHub remains the audit layer, but the run register should be the human-readable workflow state.
+
 ### `approved/`
 
 The trusted layer.

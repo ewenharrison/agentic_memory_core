@@ -55,11 +55,21 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Why: `working/` better captures the actual role of pre-approved drafts, concept notes, search strategies, figures, and structured notes, while `sources/` remains the raw intake layer.
 - Evidence: migrated across all live project folders and repo-level docs.
 
-### 2026-04-22: Literature Scout and Synthesis Agent modes
+### 2026-04-22: Context Scout and Synthesis Agent modes
 - Status: `Promote now`
-- Why: reusable agent roles make Tier 2 more explicit and reduce the risk of unintegrated literature findings being treated as memory.
-- Evidence: prompt templates exist and `run-tier2-cloud-task.ps1` can resolve `general`, `literature_scout`, and `synthesis_agent` modes.
+- Why: reusable agent roles make Tier 2 more explicit while avoiding overclaiming that repo-context scanning is external literature search.
+- Evidence: prompt templates exist and `run-tier2-cloud-task.ps1` can resolve `general`, `context_scout`, and `synthesis_agent` modes.
 - Evidence: the core manual workflow now exposes `agent_mode`.
+
+### 2026-04-22: separate literature-search protocol from cloud agent modes
+- Status: `Promote now`
+- Why: real literature retrieval needs explicit search execution, search-result files, and source counts rather than prompt-only cloud synthesis.
+- Evidence: the project exposed a failure mode where a PubMed search strategy was sent to a context-only agent mode.
+
+### 2026-04-22: cross-project agent run register
+- Status: `Promote now`
+- Why: multi-agent PR workflows need a readable project-control surface beyond GitHub's PR list.
+- Evidence: scheduled sample-project PRs and healthcare scout/synthesis handoffs became hard to track without an explicit register.
 
 ### 2026-04-22: Markdown-to-Word export routine
 - Status: `Promote now`

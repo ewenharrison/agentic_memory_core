@@ -31,11 +31,21 @@ If a procedure changes, update it here first and then only add project-specific 
 - If Tier 2 is enabled proactively, record its permission and limits in `auto/autonomous-lane-policy.md`.
 - Tier 2 may support `memory.md`, but its outputs must remain clearly provisional until reviewed or promoted.
 
-## Scout To Synthesis Rule
+## Search, Scout, And Synthesis Rule
 
-- When a `Literature Scout` pass finds non-trivial new material, changed framing, or evidence that could alter project positioning, follow it with a `Synthesis Agent` pass.
+- Treat external literature retrieval as a separate search step, not as a default Tier 2 cloud capability.
+- Use [literature-search-protocol.md](literature-search-protocol.md) when a task requires PubMed, Crossref, Semantic Scholar, journal, or web searches.
+- Store search strategies and executed search results separately in `working/`.
+- Use `context_scout` only for scanning existing repo context; it must not claim to have run external searches.
+- When a real search or `Context Scout` pass finds non-trivial new material, changed framing, or evidence that could alter project positioning, follow it with a `Synthesis Agent` pass.
 - Use the `Synthesis Agent` to integrate new findings with existing memory, novelty claims, open loops, and current project framing before deciding what becomes an approved note or a project-memory update.
 - Minor confirmatory search results do not always require a synthesis pass.
+
+## Agent Run Register Rule
+
+- Record cloud and local agent runs in `workspace/runs/agent-runs.md`.
+- Include the input file or prompt, output PR or note, status, dependencies, and final decision.
+- Do not rely on GitHub PR lists alone as the project-control surface.
 
 ## Pull Sync Rule
 

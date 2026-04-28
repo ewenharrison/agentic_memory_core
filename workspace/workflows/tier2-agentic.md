@@ -30,6 +30,15 @@ When updating `memory.md`, always link source entries to the local note or downl
 
 Autonomous memory is useful working memory, but it should not be treated as trusted canonical memory until you promote it.
 
+## Agent Mode Rule
+
+- `general` is for broad project maintenance.
+- `context_scout` is for scanning existing repo context only.
+- `synthesis_agent` is for integrating supplied evidence, notes, and search results with current project framing.
+- `literature_scout` is reserved for a future workflow with real external search capability and should not be used as a prompt-only cloud mode.
+
+When a task requires PubMed, Crossref, Semantic Scholar, journal, or web retrieval, follow [literature-search-protocol.md](../repo/literature-search-protocol.md) and create a separate search-results note before synthesis.
+
 ## Possible Future Requirement
 
 Tier 2 may later need a stricter `LLM-as-judge` layer for relevance control, especially in literature-heavy projects.

@@ -20,6 +20,7 @@ $includePaths = @(
     "workspace\workflows",
     "workspace\registry",
     "workspace\registry\index.core.md",
+    "workspace\runs\agent-runs.core.md",
     "workspace\projects\sample-project",
     ".github\workflows\tier2-cloud-maintenance.core.yml",
     "scripts\export-markdown-to-word.ps1",
@@ -56,6 +57,9 @@ foreach ($relativePath in $includePaths) {
     }
     if ($relativePath -match 'tier2-cloud-maintenance\.core\.yml$') {
         $targetPath = Join-Path $destinationPath ".github\\workflows\\tier2-cloud-maintenance.yml"
+    }
+    if ($relativePath -eq "workspace\runs\agent-runs.core.md") {
+        $targetPath = Join-Path $destinationPath "workspace\runs\agent-runs.md"
     }
     $targetParent = Split-Path -Parent $targetPath
     if ($targetParent) {

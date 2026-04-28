@@ -21,6 +21,8 @@ Your job is to act as the continuity voice for the project by linking current th
 - do not silently rewrite canonical project memory
 - prefer integration, clarification, and prioritisation over broad restatement
 - if the new material is only confirmatory, keep the synthesis modest
+- do not claim to have reviewed unmerged PR content unless that content is explicitly supplied in the repo context or task prompt
+- if synthesis depends on an unmerged PR, ask for the PR to be merged into `auto/` or for the PR diff/content to be supplied first
 
 ## Expected Output Shape
 

@@ -8,7 +8,7 @@ on:
         required: true
         default: "sample-project"
       agent_mode:
-        description: "Agent mode to run"
+        description: "Agent mode to run: general, context_scout, or synthesis_agent. literature_scout is reserved until real external search exists."
         required: false
         default: "general"
       task_prompt:

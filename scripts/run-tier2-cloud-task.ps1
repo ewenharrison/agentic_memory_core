@@ -88,11 +88,13 @@ function Resolve-AgentMode {
     $normalised = $Value.Trim().ToLowerInvariant()
     switch ($normalised) {
         "general" { return "general" }
-        "literature_scout" { return "literature_scout" }
-        "literature-scout" { return "literature_scout" }
+        "context_scout" { return "context_scout" }
+        "context-scout" { return "context_scout" }
         "synthesis_agent" { return "synthesis_agent" }
         "synthesis-agent" { return "synthesis_agent" }
-        default { throw "Unsupported agent mode '$Value'. Use 'general', 'literature_scout', or 'synthesis_agent'." }
+        "literature_scout" { throw "The 'literature_scout' mode is reserved for a future workflow with real external search capability. Use 'context_scout' for repo-context scanning, or run a literature search separately and pass the results to synthesis_agent." }
+        "literature-scout" { throw "The 'literature_scout' mode is reserved for a future workflow with real external search capability. Use 'context_scout' for repo-context scanning, or run a literature search separately and pass the results to synthesis_agent." }
+        default { throw "Unsupported agent mode '$Value'. Use 'general', 'context_scout', or 'synthesis_agent'." }
     }
 }
 
@@ -103,7 +105,7 @@ function Get-AgentModeLabel {
     )
 
     switch ($Mode) {
-        "literature_scout" { return "Literature Scout" }
+        "context_scout" { return "Context Scout" }
         "synthesis_agent" { return "Synthesis Agent" }
         default { return "General Tier 2 Agent" }
     }
@@ -119,7 +121,7 @@ function Get-AgentPromptTemplateText {
     )
 
     $templateMap = @{
-        literature_scout = "workspace\_templates\literature_scout_prompt.md"
+        context_scout    = "workspace\_templates\context_scout_prompt.md"
         synthesis_agent  = "workspace\_templates\synthesis_agent_prompt.md"
     }
 
