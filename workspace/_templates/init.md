@@ -13,11 +13,13 @@ Shared procedure details live in [../../repo/shared-procedures.md](../../repo/sh
 
 ## Required Read Order
 
-1. [memory.md](./memory.md)
-2. [project.md](./project.md)
-3. [approved/source-index.md](./approved/source-index.md)
-4. [auto/source-index.md](./auto/source-index.md)
-5. [logs/activity.md](./logs/activity.md)
+1. [../../repo/shared-procedures.md](../../repo/shared-procedures.md)
+2. Task-relevant repo procedure files, such as [../../repo/literature-search-protocol.md](../../repo/literature-search-protocol.md) for external literature, web, journal, or URL access work
+3. [memory.md](./memory.md)
+4. [project.md](./project.md)
+5. [approved/source-index.md](./approved/source-index.md)
+6. [auto/source-index.md](./auto/source-index.md)
+7. [logs/activity.md](./logs/activity.md)
 
 ## Expected Rehydration Summary
 
@@ -28,6 +30,7 @@ The resume summary should state:
 - the main open loops
 - the next actions
 - the current guardrails
+- the repo-level procedure files loaded for the task
 
 ## Current Resume Intent
 

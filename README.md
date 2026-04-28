@@ -105,6 +105,8 @@ Example pattern:
 - `working/search-strategy-<topic>.md`
 - `working/search-results-<topic>.md`
 
+First-pass search summaries and candidate bibliography notes should also stay in `working/` or `auto/` until explicitly promoted. Do not put search-derived summaries directly into `approved/` just because they are tidy or well cited.
+
 ### `workspace/runs/agent-runs.md`
 
 The cross-project control surface for agent runs.
@@ -122,6 +124,8 @@ GitHub remains the audit layer, but the run register should be the human-readabl
 
 The trusted layer.
 Use it for reviewed source notes and durable project knowledge.
+
+`approved/` means human-reviewed canonical memory. Raw user-provided files can live in `sources/`, but an agent summary of them is not approved until reviewed or explicitly requested as an approved note.
 
 ### `auto/`
 
@@ -185,11 +189,15 @@ Use:
 The standard read order is:
 
 1. `profile/context.md` if present
-2. `memory.md`
-3. `project.md`
-4. `approved/source-index.md`
-5. `auto/source-index.md`
-6. `logs/activity.md`
+2. `workspace/repo/shared-procedures.md`
+3. task-relevant repo procedures, such as `workspace/repo/literature-search-protocol.md` for web, literature, journal, or URL access work
+4. `memory.md`
+5. `project.md`
+6. `approved/source-index.md`
+7. `auto/source-index.md`
+8. `logs/activity.md`
+
+The rehydration summary should state which repo-level procedures were loaded. If a public URL appears inaccessible, follow the literature-search protocol before concluding it is unavailable: try materially different access routes and distinguish content-level failures from sandbox, proxy, TLS, or client failures.
 
 To load only the personal-context layer, use:
 

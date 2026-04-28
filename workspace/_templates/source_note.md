@@ -9,7 +9,8 @@
 - Local file:
 - Project:
 - Tier:
-- Status: `Draft`, `Approved`, or `Autonomous`
+- Status: `Draft`, `Candidate`, `Approved`, or `Autonomous`
+- Approval: `Not reviewed`, `User approved`, or `User requested approved note`
 - Date added:
 
 ## Summary

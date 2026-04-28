@@ -40,6 +40,30 @@ The results file should include:
 - exclusion rationale for near-misses
 - whether each source is directly on-point, adjacent but useful, or background only
 
+Search-results files and first-pass source summaries should normally be saved in `working/`. They are evidence-gathering artefacts, not approved memory. Do not write search-derived summaries into `approved/` until the user has reviewed and explicitly approved them for promotion.
+
+## Web Access Failure Checks
+
+Do not treat a single failed request as proof that a page is unavailable. Web access is client-dependent: sandbox proxying, TLS handling, redirects, user-agent differences, JavaScript, and institutional hosting layers can all produce false negatives.
+
+Before recording that a public URL cannot be accessed, attempt at least two materially different routes where available:
+
+- browser or web-fetch tool
+- local PowerShell `Invoke-WebRequest`
+- `curl` with `-L` to follow redirects
+- `curl` with a normal browser user-agent
+- the explicit redirected URL if a `Location` header is visible
+- an unrestricted retry when the first failure looks sandbox-, proxy-, TLS-, DNS-, or connection-related
+
+Classify the result:
+
+- `Accessible`: any route returns usable content.
+- `Content-level failure`: the server returns a stable `404`, `403`, or equivalent across more than one route.
+- `Environment/client failure`: errors mention proxying, TLS, connection close, DNS, sandbox denial, or differ across routes.
+- `Unresolved`: checks conflict and no route returns usable content.
+
+For any non-accessible or conflicting result, record the date, URL, method, status code or error text, redirect target, and conclusion in the search-results note. If a route succeeds, save a local snapshot or source note when the page is important for future verification.
+
 ## Agent Handoff
 
 Only after a search-results file exists should the material be passed to a `Synthesis Agent`.
@@ -63,3 +87,5 @@ Until an external-search workflow exists, do not trigger `literature_scout` as a
 ## Guardrail
 
 If a note claims to have run a literature search but lists only repo files as evidence, treat it as a context-scout note, not as search results.
+
+If a note was generated from web or literature search results without explicit human approval, treat it as `working` or `auto` material even if it is polished, well cited, or written in a source-note format.

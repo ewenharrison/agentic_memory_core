@@ -81,6 +81,20 @@ Use this file as the running shortlist of framework improvements that may be pro
 - Why: potentially useful for literature-heavy projects, but not yet implemented or designed enough for a core feature.
 - Evidence: captured as a future requirement in the Tier 2 workflow.
 
+### 2026-04-28: multi-route web access failure checks
+- Status: `Promote now`
+- Why: single-route web failures can be false negatives because sandbox proxying, redirects, TLS handling, user-agent handling, or institutional hosting layers can differ by client.
+- Evidence: a live project setup exposed a false inaccessible-page conclusion that was resolved by trying a different client and following the redirect chain.
+
+### 2026-04-28: repo procedures loaded during project initialisation
+- Status: `Promote now`
+- Why: repo-wide procedures are only protective if they are loaded before task execution; relying on ad hoc discovery after something goes wrong leaves predictable gaps.
+- Evidence: live project work exposed an initialisation gap where an existing repo procedure was not consulted before task execution.
+
+### 2026-04-28: stricter approval boundary for search-derived summaries
+- Status: `Promote now`
+- Why: `approved/` should mean human-reviewed canonical memory. Initial web-search summaries can be useful and well formed but should not acquire approved status without explicit human-in-the-loop promotion.
+- Evidence: live project setup revealed that candidate literature found during initialisation could be placed into an approved source index before review.
 ## How To Use This File
 
 - Add one short entry when a new repo-level pattern emerges.

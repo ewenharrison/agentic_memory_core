@@ -19,17 +19,20 @@ Example:
 When the user gives the initialisation command, the agent should:
 
 1. If `profile/context.md` exists, open it first.
-2. Open `workspace/projects/<project-slug>/memory.md`.
-3. Open `workspace/projects/<project-slug>/project.md`.
-4. Open `workspace/projects/<project-slug>/approved/source-index.md` for evidence navigation.
-5. Open `workspace/projects/<project-slug>/auto/source-index.md` if Tier 2 is enabled or recent exploratory work matters.
-6. Check `workspace/projects/<project-slug>/logs/activity.md` for the latest operational changes.
-7. Return a short rehydration summary covering:
+2. Open `workspace/repo/shared-procedures.md`.
+3. Open task-relevant repo procedures before acting. For literature, web, PubMed, Crossref, Semantic Scholar, journal, or URL access work, open `workspace/repo/literature-search-protocol.md`. For Word export, open `workspace/repo/word-export.md`.
+4. Open `workspace/projects/<project-slug>/memory.md`.
+5. Open `workspace/projects/<project-slug>/project.md`.
+6. Open `workspace/projects/<project-slug>/approved/source-index.md` for evidence navigation.
+7. Open `workspace/projects/<project-slug>/auto/source-index.md` if Tier 2 is enabled or recent exploratory work matters.
+8. Check `workspace/projects/<project-slug>/logs/activity.md` for the latest operational changes.
+9. Return a short rehydration summary covering:
    - current objective
    - key carried-forward claims
    - open loops
    - next actions
    - any important guardrails
+   - which repo-level procedure files were loaded
 
 When the user gives `Initialise personal context`, the agent should:
 
@@ -48,4 +51,5 @@ This command means: "We are starting again. Reload the project context from the 
 - `project.md` remains the slower-changing governance and structure file.
 - `approved/` is canonical.
 - `auto/` is provisional unless promoted.
+- Repo-level procedures are part of initialisation, not optional background context.
 - Prefer British English spelling in repo documentation and memory files where practical.
